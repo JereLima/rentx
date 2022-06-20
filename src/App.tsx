@@ -17,6 +17,7 @@ import Routes from "./routes";
 import { theme } from "./theme";
 import AppLoading from "expo-app-loading";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { StatusBar } from "react-native";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -32,6 +33,7 @@ const App = () => {
   } else {
     return (
       <GestureHandlerRootView style={{flex:1}}>
+
         <SafeAreaProvider >
         <ThemeProvider theme={theme}>
           <Routes />

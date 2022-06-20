@@ -1,18 +1,45 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { MarkedDateProps } from "../components/Calendar";
+import { CarDto } from "../dtos/CarDTO";
 
 export type RootStackParamList = {
-  //Auth
+  //unauthenticated
   Register: undefined;
-  //Shopping
+  //Authenticated
   Home: undefined;
-  CarDetails: undefined;
+  CarDetails: CarDto;
+  SelectPeriod: CarDto;
+  SchedulingDetails: { car: CarDto, period: string[] };
+  RentConfirmation: undefined;
+  Scheduling: undefined;
 };
 
+export type HomeNavigationProps = NativeStackScreenProps<
+  RootStackParamList,
+  "Home"
+>;
 
-export type RegisterNavigationProps = NativeStackScreenProps<RootStackParamList, 'Register'>;
+export type CarDetailsProps = NativeStackScreenProps<
+  RootStackParamList,
+  "CarDetails"
+>;
 
+export type SelectPeriodProps = NativeStackScreenProps<
+  RootStackParamList,
+  "SelectPeriod"
+>;
 
-export type HomeNavigationProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
-export type CarDetailsNavigationProps = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
+export type SchedulingDetailsProps = NativeStackScreenProps<
+  RootStackParamList,
+  "SchedulingDetails"
+>;
 
+export type RentConfirmationProps = NativeStackScreenProps<
+  RootStackParamList,
+  "RentConfirmation"
+>;
 
+export type SchedulingProps = NativeStackScreenProps<
+  RootStackParamList,
+  "Scheduling"
+>;

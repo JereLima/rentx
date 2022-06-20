@@ -15,25 +15,21 @@ import {
   Image,
 } from "./styles";
 import Gasoline from "../../assets/svg/gasoline.svg";
-
-interface CartData {
-  brand: string;
-  name: string;
-  period: string;
-  price: number;
-  image: string;
+import { CarDto } from "../../dtos/CarDTO";
+import { RectButtonProps } from "react-native-gesture-handler";
+import { getAccessoryIcon } from "../../utils/getAccessoryIcon";
+import { TouchableOpacityProps } from "react-native";
+interface Props extends TouchableOpacityProps {
+  data: CarDto;
+  goDetails?: () => void;
 }
 
-interface Props {
-    data: CartData;
-    goDetails: () => void;
-}
-
-const Car: React.FC<Props> = ({data, goDetails}) => {
-    console.log(data)
+const Car: React.FC<Props> = ({ data, goDetails, ...rest }) => {
   const theme = useTheme();
+  const MotorIcon = getAccessoryIcon(data?.fuel_type);
+
   return (
-    <Container onPress={goDetails}>
+    <Container onPress={goDetails} {...rest}>
       <Column>
         <Details>
           <Brand>{data?.brand}</Brand>
@@ -42,20 +38,17 @@ const Car: React.FC<Props> = ({data, goDetails}) => {
 
         <About>
           <Rent>
-            <Period>{data?.period}</Period>
-            <Price>R${data?.price}</Price>
+            <Period>{data?.rent.period}</Period>
+            <Price>R${data?.rent.price}</Price>
           </Rent>
 
           <Type>
-            <Gasoline width={30} fill={theme.colors.main} />
+            <MotorIcon />
           </Type>
         </About>
       </Column>
 
-      <Image
-        source={{ uri: data?.image }}
-        resizeMode="cover"
-      />
+      <Image source={{ uri: data?.thumbnail }} resizeMode="cover" />
     </Container>
   );
 };

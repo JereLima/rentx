@@ -1,14 +1,27 @@
+import { TouchableOpacity } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 import { theme } from "../../theme";
 
-export const Container = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.background_primary};
+export const Container = styled(TouchableOpacity).attrs({
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.23,
+  shadowRadius: 2.62,
+
+  elevation: 4,
+})`
+  background-color: ${({ theme }) => theme.colors.shape};
   justify-content: space-between;
   flex-direction: row;
   margin: ${RFValue(8)}px;
   padding: ${RFValue(24)}px;
   min-height: ${RFValue(126)}px;
+  border-radius: ${RFValue(8)}px;
 `;
 
 export const Column = styled.View`
@@ -36,15 +49,16 @@ export const About = styled.View`
 `;
 
 export const Rent = styled.View`
-    margin-right: 24px;
+  margin-right: 24px;
 `;
 
 export const Period = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
-  font-size: ${RFValue(12)};
+  font-size: ${RFValue(12)}px;
   color: ${({ theme }) => theme.colors.text};
   text-transform: uppercase;
 `;
+
 export const Price = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   font-size: ${RFValue(18)}px;

@@ -2,10 +2,15 @@ import { FlatList, View } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
+import { CarDto } from "../../../dtos/CarDTO";
 
-export const Container = styled.View`
+export const IosArea = styled.View`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.background_primary};
+  background-color: ${({ theme }) => theme.colors.header};
+`;
+
+export const Container = styled.SafeAreaView`
+  flex: 1;
 `;
 
 export const Header = styled.View`
@@ -29,7 +34,19 @@ export const Total = styled.Text`
 
 export const Content = styled.View`
   flex: 1;
-  background: goldenrod;
+  background-color: ${({ theme }) => theme.colors.background_secondary};
 `;
 
-export const CarList = styled(FlatList)``;
+export const CarList = styled(FlatList as new () => FlatList<CarDto>)``;
+
+export const Float = styled.TouchableOpacity`
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  position: absolute;
+  right: 22px;
+  bottom: 30px;
+  background-color: red;
+  align-items: center;
+  justify-content: center;
+`;
